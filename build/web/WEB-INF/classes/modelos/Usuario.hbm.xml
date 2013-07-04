@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 26, 2013 5:38:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="modelos.Usuario" table="usuario" catalog="basecgam">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column name="id_Usuario" />
+            <generator class="identity" />
+        </id>
+        <property name="nombres" type="string">
+            <column name="Nombres" length="100" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="Apellidos" length="100" not-null="true" />
+        </property>
+        <property name="codigo" type="string">
+            <column name="Codigo" length="4" not-null="true" />
+        </property>
+        <property name="grupo" type="string">
+            <column name="Grupo" length="45" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="45" not-null="true" />
+        </property>
+        <property name="cedula" type="string">
+            <column name="Cedula" length="10" not-null="true" />
+        </property>
+        <property name="edad" type="string">
+            <column name="Edad" length="2" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="Correo" length="45" not-null="true" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="Sexo" length="9" not-null="true" />
+        </property>
+        <property name="tipoSangre" type="string">
+            <column name="Tipo_Sangre" length="2" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="45" not-null="true" />
+        </property>
+        <property name="profesion" type="string">
+            <column name="Profesion" length="45" not-null="true" />
+        </property>
+        <property name="convivencia" type="string">
+            <column name="Convivencia" length="10" not-null="true" />
+        </property>
+        <property name="patologia" type="string">
+            <column name="Patologia" length="45" not-null="true" />
+        </property>
+        <property name="alergia" type="string">
+            <column name="Alergia" length="45" not-null="true" />
+        </property>
+        <property name="instruccion" type="string">
+            <column name="Instruccion" length="45" not-null="true" />
+        </property>
+        <property name="licencia" type="boolean">
+            <column name="Licencia" not-null="true" />
+        </property>
+        <property name="hijos" type="string">
+            <column name="Hijos" length="1" not-null="true" />
+        </property>
+        <property name="afiliado" type="boolean">
+            <column name="Afiliado" not-null="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="Observaciones" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

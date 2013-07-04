@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 26, 2013 11:41:48 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Vehiculo" table="vehiculo" schema="public">
+        <id name="idVehiculo" type="int">
+            <column name="idVehiculo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="conductor" class="model.Conductor" update="false" insert="false" fetch="select">
+            <column name="idVehiculo" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="tipoVehiculo" type="string">
+            <column name="tipoVehiculo" length="15" />
+        </property>
+        <property name="capacidad" type="java.lang.Integer">
+            <column name="capacidad" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="observacion" />
+        </property>
+    </class>
+</hibernate-mapping>

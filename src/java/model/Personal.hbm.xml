@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 26, 2013 11:41:48 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Personal" table="personal" schema="public">
+        <id name="idPersonal" type="int">
+            <column name="idPersonal" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombres" type="string">
+            <column name="nombres" length="30" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="30" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="usuario" length="45" />
+        </property>
+        <property name="clave" type="string">
+            <column name="clave" length="45" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="45" />
+        </property>
+        <property name="fechaCreacion" type="date">
+            <column name="fecha_creacion" length="13" />
+        </property>
+        <property name="usuarioModificacion" type="string">
+            <column name="usuario_modificacion" length="45" />
+        </property>
+        <property name="fechaModificacion" type="date">
+            <column name="fecha_modificacion" length="13" />
+        </property>
+        <set name="paseos" inverse="true">
+            <key>
+                <column name="idPaseo" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.Paseo" />
+        </set>
+    </class>
+</hibernate-mapping>

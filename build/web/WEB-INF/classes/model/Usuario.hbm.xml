@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 26, 2013 11:41:48 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Usuario" table="usuario" schema="public">
+        <id name="idUsuario" type="long">
+            <column name="idUsuario" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="30" />
+        </property>
+        <property name="nombres" type="string">
+            <column name="nombres" length="30" />
+        </property>
+        <property name="grupo" type="string">
+            <column name="grupo" length="10" />
+        </property>
+        <property name="telefono" type="java.lang.Long">
+            <column name="telefono" precision="10" scale="0" />
+        </property>
+        <property name="cedula" type="string">
+            <column name="cedula" length="10" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fechaNacimiento" length="13" />
+        </property>
+        <property name="edad" type="java.lang.Integer">
+            <column name="edad" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="60" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" length="1" />
+        </property>
+        <property name="tipoSangre" type="string">
+            <column name="tipoSangre" length="3" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="50" />
+        </property>
+        <property name="profesion" type="string">
+            <column name="profesion" length="50" />
+        </property>
+        <property name="patologia" type="string">
+            <column name="patologia" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="observacion" />
+        </property>
+        <property name="licenciaConducir" type="string">
+            <column name="licenciaConducir" length="2" />
+        </property>
+        <property name="hijos" type="string">
+            <column name="hijos" length="2" />
+        </property>
+        <property name="afiliado" type="string">
+            <column name="afiliado" length="2" />
+        </property>
+    </class>
+</hibernate-mapping>

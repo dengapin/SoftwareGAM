@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 26, 2013 11:41:48 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Conductor" table="conductor" schema="public">
+        <id name="idConductor" type="int">
+            <column name="idConductor" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombres" type="string">
+            <column name="nombres" length="20" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="20" />
+        </property>
+        <property name="licencia" type="java.lang.Integer">
+            <column name="licencia" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" length="1" />
+        </property>
+        <property name="telefono" type="java.lang.Integer">
+            <column name="telefono" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="100" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="observacion" />
+        </property>
+        <set name="vehiculos" inverse="true">
+            <key>
+                <column name="idVehiculo" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.Vehiculo" />
+        </set>
+    </class>
+</hibernate-mapping>
