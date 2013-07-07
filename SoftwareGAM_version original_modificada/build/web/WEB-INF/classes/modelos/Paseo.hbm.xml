@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 6, 2013 9:19:59 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="modelos.Paseo" table="paseo" catalog="basesoftware">
+        <id name="idPaseo" type="java.lang.Integer">
+            <column name="idPaseo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="vehiculo" class="modelos.Vehiculo" fetch="select">
+            <column name="id_vehiculo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="modelos.Usuario" fetch="select">
+            <column name="id_user" not-null="true" />
+        </many-to-one>
+        <property name="tema" type="string">
+            <column name="Tema" length="45" not-null="true" />
+        </property>
+        <property name="capacidad" type="int">
+            <column name="Capacidad" not-null="true" />
+        </property>
+        <property name="duracion" type="int">
+            <column name="Duracion" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
