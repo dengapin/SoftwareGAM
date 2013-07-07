@@ -1,25 +1,66 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="#{appBean.baseUrl}resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="#{appBean.baseUrl}resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Inicio</title>
+    </h:head>
 
     <body>
+        <div id="container2">
+            <div id="top2" class="ui-widget-header ui-corner-all">
+                <ui:insert name="top">Bienvenidos al Sistema CGAM</ui:insert>
 
-        <ui:composition template="./Template.xhtml">
+            </div>
+            <div id="menu">
+                <h:form>  
+                    <p:tabMenu activeIndex="3">  
+                        <p:menuitem value="Usuarios" url="#{appBean.basePath}Usuario/index.xhtml" icon="ui-icon-person"/>  
+                        <p:menuitem value="Actividades" url="#" icon="ui-icon-search" />  
+                        <p:menuitem value="Talleres" url="#" icon="ui-icon-document"/>  
+                        <p:menuitem value="Paseos" url="#" icon="ui-icon-wrench"/>  
+                        <p:menuitem value="Personal" url="#" icon="ui-icon-star" />  
+                    </p:tabMenu>                      
+                </h:form> 
+            </div>
 
-            <ui:define name="top">
-                top
-            </ui:define>
 
-            <ui:define name="content">
-                content
-            </ui:define>
+            <div id="content" class="center_content" >
+                <p:accordionPanel>  
+                    <p:tab title="Usuarios">  
+                        <h:panelGrid columns="2" cellpadding="10" >  
+                            <p:graphicImage value="/faces/views/usuarios_imagen.png" />  
+                            <h:outputText  value="El centro gerontológico es un centro de cuidado diario, pensado para que los adultos/as mayores usuarios del centro encuentren un espacio adecuado donde se promueva su autonomía e interactúen con su mismo grupo etario en condiciones de bienestar, todo esto gracias 
+                                           a los servicios de atención y programas de prevención especializada.
+                                           En este espacio de interacción se promueve la visibilización y la integración social de nuestros usuarios, por lo cual nuestro servicio se basa en tres componentes:." />  
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="Talleres">  
+                        <h:panelGrid columns="2" cellpadding="10">  
+                            <p:graphicImage value="/faces/views/usuarios_talleres.png" />  
+                            <h:outputText value="Se realizan talleres en areas relacionadas a la arte y cultural, cultura física, intercambio generacional, etcétera." />  
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="Actividades">  
+                        <h:panelGrid columns="2" cellpadding="10">  
+                            <p:graphicImage value="/faces/views/usuarios_actividades.png" />  
+                            <h:outputText value="Programa de recreación grupal, Tiempo libre: juegos de mesa, paseos, cineforo, etc.." />  
+                        </h:panelGrid>  
+                    </p:tab>  
+                </p:accordionPanel>  
 
-            <ui:define name="bottom">
-                bottom
-            </ui:define>
+            </div>
 
-        </ui:composition>
+            <div id="bottom" class="ui-widget-header ui-corner-all">
+                <ui:insert name="bottom">Sistema CGAM  </ui:insert>
+            </div>
+        </div>
 
     </body>
 </html>
