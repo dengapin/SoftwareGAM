@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 26, 2013 5:38:42 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated Jul 6, 2013 9:19:59 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="modelos.Conductor" table="conductor" catalog="basecgam">
+    <class name="modelos.Conductor" table="conductor" catalog="basesoftware">
         <id name="idConductor" type="java.lang.Integer">
             <column name="idConductor" />
             <generator class="identity" />
         </id>
-        <property name="nombre" type="string">
-            <column name="Nombre" length="45" not-null="true" />
+        <property name="nombres" type="string">
+            <column name="Nombres" length="100" not-null="true" />
         </property>
-        <property name="apellido" type="string">
-            <column name="Apellido" length="45" not-null="true" />
+        <property name="apellidos" type="string">
+            <column name="Apellidos" length="100" not-null="true" />
         </property>
         <property name="licencia" type="string">
             <column name="Licencia" length="2" not-null="true" />
         </property>
         <property name="sexo" type="string">
-            <column name="Sexo" length="45" not-null="true" />
+            <column name="Sexo" length="2" not-null="true" />
         </property>
         <property name="telefono" type="string">
             <column name="Telefono" length="45" not-null="true" />
@@ -27,7 +27,13 @@
             <column name="Direccion" length="45" not-null="true" />
         </property>
         <property name="observacion" type="string">
-            <column name="Observacion" length="100" not-null="true" />
+            <column name="Observacion" length="45" not-null="true" />
         </property>
+        <set name="vehiculos" inverse="true">
+            <key>
+                <column name="conductor_n" not-null="true" />
+            </key>
+            <one-to-many class="modelos.Vehiculo" />
+        </set>
     </class>
 </hibernate-mapping>

@@ -1,48 +1,42 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 26, 2013 5:38:42 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated Jul 6, 2013 9:19:59 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="modelos.Personal" table="personal" catalog="basecgam">
+    <class name="modelos.Personal" table="personal" catalog="basesoftware">
         <id name="idPersonal" type="java.lang.Integer">
-            <column name="id_Personal" />
+            <column name="idPersonal" />
             <generator class="identity" />
         </id>
         <many-to-one name="rol" class="modelos.Rol" fetch="select">
-            <column name="rol_id" not-null="true" />
+            <column name="id_rol" not-null="true" />
         </many-to-one>
-        <property name="nombres" type="string">
-            <column name="Nombres" length="45" not-null="true" />
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
         </property>
-        <property name="apellidos" type="string">
-            <column name="Apellidos" length="45" not-null="true" />
+        <property name="apellido" type="string">
+            <column name="apellido" length="45" not-null="true" />
         </property>
-        <property name="edad" type="string">
-            <column name="Edad" length="2" not-null="true" />
+        <property name="usuario" type="string">
+            <column name="usuario" length="45" not-null="true" />
         </property>
-        <property name="correo" type="string">
-            <column name="Correo" length="45" />
+        <property name="clave" type="string">
+            <column name="clave" length="45" not-null="true" />
         </property>
-        <property name="sexo" type="string">
-            <column name="Sexo" length="45" not-null="true" />
+        <property name="estado" type="string">
+            <column name="estado" length="45" />
         </property>
-        <property name="direccion" type="string">
-            <column name="Direccion" length="45" not-null="true" />
+        <property name="email" type="string">
+            <column name="email" length="45" not-null="true" />
         </property>
-        <property name="telefono" type="string">
-            <column name="Telefono" length="45" not-null="true" />
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fecha_creacion" length="19" />
         </property>
-        <property name="profesion" type="string">
-            <column name="Profesion" length="20" not-null="true" />
+        <property name="usaurioModificacion" type="string">
+            <column name="usaurio_modificacion" length="45" />
         </property>
-        <property name="cargo" type="string">
-            <column name="Cargo" length="45" not-null="true" />
-        </property>
-        <property name="instruccion" type="string">
-            <column name="Instruccion" length="45" not-null="true" />
-        </property>
-        <property name="observaciones" type="string">
-            <column name="Observaciones" length="45" />
+        <property name="fechaModificacion" type="timestamp">
+            <column name="fecha_modificacion" length="19" />
         </property>
     </class>
 </hibernate-mapping>
