@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body>
+        <ui:composition template="./../Template.xhtml">
+
+            <ui:define name="content">
+                <p:growl id="msgs" showDetail="true" />  
+                <h:form>
+                    <p:commandButton id="btnUsuarioCreate" update=":formCreate" oncomplete="dialogUsuarioCreate.show()" icon="ui-icon-document" title="Crear" value="Crear">  
+                        <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.selectedUsuario}" />  
+                    </p:commandButton>  
+                </h:form> 
+                <h:form id="formDataTable">  
+                    <p:dataTable id="cars" var="usuario" value="#{usuarioBean.usuarios}">  
+
+                        <p:column headerText="Id" style="width:4%">  
+                            <h:outputText value="#{usuario.idUsuario}" />  
+                        </p:column>  
+
+                        <p:column headerText="Nombres" style="width:4%">  
+                            <h:outputText value="#{usuario.nombres}" />  
+                        </p:column>  
+
+                        <p:column headerText="Apellidos" style="width:14%">  
+                            <h:outputText value="#{usuario.apellidos}" />  
+                        </p:column> 
+
+                        <p:column headerText="Codigo" style="width:14%">  
+                            <h:outputText value="#{usuario.codigo}" />  
+                        </p:column> 
+
+                        <p:column headerText="Grupo" style="width:14%">  
+                            <h:outputText value="#{usuario.grupo}" />  
+                        </p:column> 
+
+                        <p:column headerText="Telefono" style="width:14%">  
+                            <h:outputText value="#{usuario.telefono}" />  
+                        </p:column>
+
+                        <p:column headerText="Cedula" style="width:14%">  
+                            <h:outputText value="#{usuario.cedula}" />  
+                        </p:column> 
+
+                        <p:column headerText="Edad" style="width:14%">  
+                            <h:outputText value="#{usuario.edad}" />  
+                        </p:column> 
+
+                        <p:column headerText="Correo" style="width:14%">  
+                            <h:outputText value="#{usuario.correo}" />  
+                        </p:column> 
+
+                        <p:column headerText="Sexo" style="width:14%">  
+                            <h:outputText value="#{usuario.sexo}" />  
+                        </p:column> 
+
+                        <p:column headerText="Tipo de Sangre" style="width:14%">  
+                            <h:outputText value="#{usuario.tipoSangre}" />  
+                        </p:column> 
+
+                        <p:column headerText="Direccion" style="width:14%">  
+                            <h:outputText value="#{usuario.direccion}" />  
+                        </p:column> 
+
+                        <p:column headerText="Profesion" style="width:14%">  
+                            <h:outputText value="#{usuario.profesion}" />  
+                        </p:column> 
+
+                        <p:column headerText="Convivencia" style="width:14%">  
+                            <h:outputText value="#{usuario.convivencia}" />  
+                        </p:column> 
+
+                        <p:column headerText="Patologia" style="width:14%">  
+                            <h:outputText value="#{usuario.patologia}" />  
+                        </p:column> 
+
+                        <p:column headerText="Alergia" style="width:14%">  
+                            <h:outputText value="#{usuario.alergia}" />  
+                        </p:column> 
+
+                        <p:column headerText="Instruccion" style="width:14%">  
+                            <h:outputText value="#{usuario.instruccion}" />  
+                        </p:column> 
+                        
+                        <p:column headerText="Licencia" style="width:14%">  
+                            <h:outputText value="#{usuario.licencia}" />  
+                        </p:column> 
+
+                        <p:column headerText="Hijos" style="width:14%">  
+                            <h:outputText value="#{usuario.hijos}" />  
+                        </p:column> 
+
+                        <p:column headerText="Observaciones" style="width:14%">  
+                            <h:outputText value="#{usuario.observaciones}" />  
+                        </p:column> 
+
+                        <p:column style="width:4%">  
+                            <p:commandButton id="btnUpdate" update=":formUpdate" oncomplete="dialogUsuarioUpdate.show()" icon="ui-icon-arrowrefresh-1-w" title="Actualizar">  
+                                <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.selectedUsuario}" />  
+                            </p:commandButton> 
+                            
+                            <p:commandButton id="btnDelete" update=":formDelete" oncomplete="dialogUsuarioDelete.show()" icon="ui-icon-close" title="Eliminar">  
+                                <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.selectedUsuario}" />  
+                            </p:commandButton>  
+                        </p:column>  
+
+                    </p:dataTable>  
+                </h:form>
+                <h:form id="formCreate">
+                    <p:dialog header="Crear Usuario" widgetVar="dialogUsuarioCreate" resizable="false" id="dlgUsuarioCreate"  
+                              style="width:24%" showEffect="fade" hideEffect="explode"  modal="true">  
+
+                        <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;"> 
+                            
+                            <h:outputText value="Id: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.idUsuario}" />
+                            
+                            <h:outputText value="Nombres: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.nombres}" />  
+
+                            <h:outputText value="Apellidos: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.apellidos}" />  
+
+                            <h:outputText value="Codigo: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.codigo}" />  
+                            
+                            <h:outputText value="Grupo: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.grupo}" /> 
+                            
+                            <h:outputText value="Telefono: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.telefono}" />  
+
+                            <h:outputText value="Cedula: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.cedula}" />  
+
+                            <h:outputText value="Edad: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.edad}" />  
+
+                            <h:outputText value="Email: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.correo}" size="40"/>  
+                            
+                            <h:outputText value="Sexo: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.sexo}" />  
+
+                            <h:outputText value="Tipo de sangre: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.tipoSangre}" />  
+
+                            <h:outputText value="Direccion: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.direccion}" />  
+
+                            <h:outputText value="Profesion: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.profesion}" />  
+                            
+                            <h:outputText value="Convivencia: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.convivencia}" />  
+
+                            <h:outputText value="Patologia: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.patologia}" />  
+
+                            <h:outputText value="Alergia: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.alergia}" />  
+
+                            <h:outputText value="Instruccion: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.instruccion}" />  
+                            
+                            <h:outputText value="Licencia: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.licencia}" />  
+
+                            <h:outputText value="Hijos: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.hijos}" />  
+                                                      
+                            <h:outputText value="Observaciones: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.observaciones}" />  
+                            
+                            <h:outputText value="Codigo de Representante: " />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.representante.idRepresentante}" />  
+                            
+                            <f:facet name="footer"> 
+                                <p:separator/>
+                                <p:commandButton id="btnCreateAceptar" update=":formDataTable, :msgs" oncomplete="dialogUsuarioCreate.hide()" actionListener="#{usuarioBean.btnCreateUsuario(actionEvent)}" icon="ui-icon-disk" title="Guardar" value="Guardar">  
+                                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.selectedUsuario}" />  
+                                </p:commandButton> 
+                                <p:commandButton id="btnCreateCancelar" oncomplete="dialogUsuarioCreate.hide()" icon="ui-icon-close" title="Cancelar" value="Cancelar">  
+                                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.selectedUsuario}" />  
+                                </p:commandButton> 
+                            </f:facet>
+
+                        </h:panelGrid> 
+
+                    </p:dialog>  
+
+                </h:form> 
+                <h:form id="formUpdate">
+                    <p:dialog header="Modificar Usuario" widgetVar="dialogUsuarioUpdate" resizable="false" id="dlgUsuarioUpdate"  
+                              style="width:24%" showEffect="fade" hideEffect="explode" modal="true">  
+
+                        <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">  
+                            
+                            <h:outputText value="Nombres" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.nombres}" />  
+
+                            <h:outputText value="Apellidos" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.apellidos}" />  
+                            
+                            <h:outputText value="Codigo" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.codigo}" />  
+
+                            <h:outputText value="Grupo" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.grupo}" />  
+                                                       
+                            <h:outputText value="Telefono" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.telefono}" />  
+
+                            <h:outputText value="Cedula" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.cedula}" />  
+
+                            <h:outputText value="Edad" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.edad}" />  
+                            
+                            <h:outputText value="Email" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.correo}" size="40"/>  
+                            
+                            <h:outputText value="Sexo" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.sexo}" />  
+
+                            <h:outputText value="Tipo de Sangre" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.tipoSangre}" />  
+
+                            <h:outputText value="Direccion" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.direccion}" />  
+                            
+                            <h:outputText value="Convivencia" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.convivencia}" />  
+
+                            <h:outputText value="Patologia" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.patologia}" />  
+
+                            <h:outputText value="Alergia" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.alergia}" />  
+                            
+                            <h:outputText value="Instruccion" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.instruccion}" />  
+
+                            <h:outputText value="Licencia" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.licencia}" />  
+
+                            <h:outputText value="Hijos" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.hijos}" /> 
+                            
+                            <h:outputText value="Observacion" />  
+                            <p:inputText value="#{usuarioBean.selectedUsuario.observaciones}" /> 
+                            
+                            <f:facet name="footer"> 
+                                <p:separator/>
+                                <p:commandButton id="btnUpdateAceptar" update=":formDataTable, :msgs" oncomplete="dialogUsuarioUpdate.hide()" actionListener="#{usuarioBean.btnUpdateUsuario(actionEvent)}" icon="ui-icon-search" title="Guardar" value="Guardar">  
+                                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.selectedUsuario}" />  
+                                </p:commandButton> 
+                                <p:commandButton id="btnUpdateCancelar" oncomplete="dialogUsuarioUpdate.hide()" icon="ui-icon-close" title="Cancelar" value="Cancelar">  
+                                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.selectedUsuario}" />  
+                                </p:commandButton> 
+                            </f:facet>
+                        </h:panelGrid> 
+
+                    </p:dialog>  
+
+                </h:form> 
+                <h:form id="formDelete">
+                    <p:confirmDialog id="confirmDialog" message="Esta seguro de eliminar el registro?" showEffect="fade" hideEffect="explode"
+                                     header="Eliminar Usuario" severity="alert" widgetVar="dialogUsuarioDelete">  
+                        <h:inputHidden value="#{usuarioBean.selectedUsuario.idUsuario}" />
+                        <p:commandButton id="confirm" value="Aceptar" update=":formDataTable, :msgs" oncomplete="dialogUsuarioDelete.hide()" 
+                                         actionListener="#{usuarioBean.btnDeleteUsuario(actionEvent)}" />  
+                        <p:commandButton id="decline" value="Cancelar" onclick="dialogUsuarioDelete.hide()" type="button" icon="ui-icon-close"/>   
+
+                    </p:confirmDialog>
+                </h:form> 
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
