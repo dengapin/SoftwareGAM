@@ -24,7 +24,7 @@ private List<Usuario> usuarios;
     
   
      public UsuarioBean() {
-         this.usuarios= new ArrayList<Usuario> ();         
+         this.usuarios= new ArrayList();         
     }
      
         public List<Usuario> getUsuarios() {

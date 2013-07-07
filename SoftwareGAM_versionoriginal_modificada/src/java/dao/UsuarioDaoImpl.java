@@ -22,12 +22,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
         
             Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
             sesion.beginTransaction();
-            String sql = "FROM Usuario WHERE usuario ='" + usuario.getNombres()+ "'";
+            String sql = "FROM Usuario WHERE usuario ='" + usuario.getCedula()+ "'";
             try {
             model = (Usuario) sesion.createQuery(sql).uniqueResult();
             sesion.beginTransaction().commit();
         } catch (Exception e) {
             sesion.beginTransaction().rollback();
+           
         }
         return model;
 
@@ -36,19 +37,19 @@ public class UsuarioDaoImpl implements UsuarioDao {
     @Override
     public List<Usuario> findAll() {
 
-        List L = null;
+        List Lista = null;
      
 
             Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
             sesion.beginTransaction();  
-            L =  sesion.createQuery("FROM Usuario").list();
+            Lista =  sesion.createQuery("FROM Usuario").list();
                try {
             sesion.beginTransaction().commit();
         } catch (Exception e) {
             System.out.println("Problema en la base");
             sesion.beginTransaction().rollback();
         }
-        return L;
+        return Lista;
     }
 
     @Override
@@ -73,6 +74,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
          Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         try {
             sesion.beginTransaction();
+            //autoicrementable
             Usuario usuariodb = (Usuario) sesion.load(Usuario.class, user.getIdUsuario());
             usuariodb.setNombres(user.getNombres());
             usuariodb.setApellidos(user.getApellidos());
