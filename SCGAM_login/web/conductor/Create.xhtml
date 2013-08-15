@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConductorCreateDlg" widgetVar="ConductorCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateConductorTitle}">
+
+            <h:form id="ConductorCreateForm">
+
+                <h:panelGroup id="messagePanel">
+                    <p:messages/>
+                </h:panelGroup>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{conductorController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{conductorController.selected.nombres}" title="#{bundle.CreateConductorTitle_nombres}" required="true" requiredMessage="#{bundle.CreateConductorRequiredMessage_nombres}"/>
+
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{conductorController.selected.apellidos}" title="#{bundle.CreateConductorTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateConductorRequiredMessage_apellidos}"/>
+
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_licencia}" for="licencia" />
+                        <p:inputText id="licencia" value="#{conductorController.selected.licencia}" title="#{bundle.CreateConductorTitle_licencia}" required="true" requiredMessage="#{bundle.CreateConductorRequiredMessage_licencia}"/>
+
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_sexo}" for="sexo" />
+                        <p:inputText id="sexo" value="#{conductorController.selected.sexo}" title="#{bundle.CreateConductorTitle_sexo}" required="true" requiredMessage="#{bundle.CreateConductorRequiredMessage_sexo}"/>
+
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{conductorController.selected.telefono}" title="#{bundle.CreateConductorTitle_telefono}" required="true" requiredMessage="#{bundle.CreateConductorRequiredMessage_telefono}"/>
+
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{conductorController.selected.direccion}" title="#{bundle.CreateConductorTitle_direccion}" required="true" requiredMessage="#{bundle.CreateConductorRequiredMessage_direccion}"/>
+
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{conductorController.selected.observacion}" title="#{bundle.CreateConductorTitle_observacion}" required="true" requiredMessage="#{bundle.CreateConductorRequiredMessage_observacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{conductorController.saveNew}" value="#{bundle.Save}" update="display,messagePanel,:ConductorListForm:datalist" oncomplete="if(!args.validationFailed) {ConductorCreateDialog.hide();}"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ConductorCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

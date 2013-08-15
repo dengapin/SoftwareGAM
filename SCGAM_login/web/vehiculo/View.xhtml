@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VehiculoViewDlg" widgetVar="VehiculoViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewVehiculoTitle}">
+
+            <h:form id="VehiculoViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vehiculoController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewVehiculoLabel_idVehiculo}"/>
+                        <h:outputText value="#{vehiculoController.selected.idVehiculo}" title="#{bundle.ViewVehiculoTitle_idVehiculo}"/>
+
+                        <h:outputText value="#{bundle.ViewVehiculoLabel_tipo}"/>
+                        <h:outputText value="#{vehiculoController.selected.tipo}" title="#{bundle.ViewVehiculoTitle_tipo}"/>
+
+                        <h:outputText value="#{bundle.ViewVehiculoLabel_capacidad}"/>
+                        <h:outputText value="#{vehiculoController.selected.capacidad}" title="#{bundle.ViewVehiculoTitle_capacidad}"/>
+
+                        <h:outputText value="#{bundle.ViewVehiculoLabel_observacion}"/>
+                        <h:outputText value="#{vehiculoController.selected.observacion}" title="#{bundle.ViewVehiculoTitle_observacion}"/>
+
+                        <h:outputText value="#{bundle.ViewVehiculoLabel_conductorN}"/>
+                        <h:outputText value="#{vehiculoController.selected.conductorN.idConductor}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="VehiculoViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RepresentanteEditDlg" widgetVar="RepresentanteEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditRepresentanteTitle}">
+
+            <h:form id="RepresentanteEditForm">
+
+                <h:panelGroup id="messagePanel">
+                    <p:messages id="RepresentanteEditMessages"/>
+                </h:panelGroup>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{representanteController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditRepresentanteLabel_idRepresentante}" for="idRepresentante" />
+                        <h:outputText id="idRepresentante" value="#{representanteController.selected.idRepresentante}" />
+
+                        <p:outputLabel value="#{bundle.EditRepresentanteLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{representanteController.selected.nombres}" title="#{bundle.EditRepresentanteTitle_nombres}" required="true" requiredMessage="#{bundle.EditRepresentanteRequiredMessage_nombres}"/>
+
+                        <p:outputLabel value="#{bundle.EditRepresentanteLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{representanteController.selected.apellidos}" title="#{bundle.EditRepresentanteTitle_apellidos}" required="true" requiredMessage="#{bundle.EditRepresentanteRequiredMessage_apellidos}"/>
+
+                        <p:outputLabel value="#{bundle.EditRepresentanteLabel_edad}" for="edad" />
+                        <p:inputText id="edad" value="#{representanteController.selected.edad}" title="#{bundle.EditRepresentanteTitle_edad}" required="true" requiredMessage="#{bundle.EditRepresentanteRequiredMessage_edad}"/>
+
+                        <p:outputLabel value="#{bundle.EditRepresentanteLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{representanteController.selected.email}" title="#{bundle.EditRepresentanteTitle_email}" required="true" requiredMessage="#{bundle.EditRepresentanteRequiredMessage_email}"/>
+
+                        <p:outputLabel value="#{bundle.EditRepresentanteLabel_sexo}" for="sexo" />
+                        <p:inputText id="sexo" value="#{representanteController.selected.sexo}" title="#{bundle.EditRepresentanteTitle_sexo}" required="true" requiredMessage="#{bundle.EditRepresentanteRequiredMessage_sexo}"/>
+
+                        <p:outputLabel value="#{bundle.EditRepresentanteLabel_profesion}" for="profesion" />
+                        <p:inputText id="profesion" value="#{representanteController.selected.profesion}" title="#{bundle.EditRepresentanteTitle_profesion}" required="true" requiredMessage="#{bundle.EditRepresentanteRequiredMessage_profesion}"/>
+
+                        <p:outputLabel value="#{bundle.EditRepresentanteLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{representanteController.selected.observacion}" title="#{bundle.EditRepresentanteTitle_observacion}" required="true" requiredMessage="#{bundle.EditRepresentanteRequiredMessage_observacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{representanteController.save}" value="#{bundle.Save}" update="display,messagePanel,:RepresentanteListForm:datalist" oncomplete="if(!args.validationFailed) {RepresentanteEditDialog.hide();}"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RepresentanteEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
