@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VehiculoEditDlg" widgetVar="VehiculoEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditVehiculoTitle}">
+
+            <h:form id="VehiculoEditForm">
+
+                <h:panelGroup id="messagePanel">
+                    <p:messages id="VehiculoEditMessages"/>
+                </h:panelGroup>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{vehiculoController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditVehiculoLabel_idVehiculo}" for="idVehiculo" />
+                        <h:outputText id="idVehiculo" value="#{vehiculoController.selected.idVehiculo}" />
+
+                        <p:outputLabel value="#{bundle.EditVehiculoLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{vehiculoController.selected.tipo}" title="#{bundle.EditVehiculoTitle_tipo}" required="true" requiredMessage="#{bundle.EditVehiculoRequiredMessage_tipo}"/>
+
+                        <p:outputLabel value="#{bundle.EditVehiculoLabel_capacidad}" for="capacidad" />
+                        <p:inputText id="capacidad" value="#{vehiculoController.selected.capacidad}" title="#{bundle.EditVehiculoTitle_capacidad}" required="true" requiredMessage="#{bundle.EditVehiculoRequiredMessage_capacidad}"/>
+
+                        <p:outputLabel value="#{bundle.EditVehiculoLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{vehiculoController.selected.observacion}" title="#{bundle.EditVehiculoTitle_observacion}" required="true" requiredMessage="#{bundle.EditVehiculoRequiredMessage_observacion}"/>
+
+                        <p:outputLabel value="#{bundle.EditVehiculoLabel_conductorN}" for="conductorN" />
+                        <p:selectOneMenu id="conductorN" value="#{vehiculoController.selected.conductorN}" required="true" requiredMessage="#{bundle.EditVehiculoRequiredMessage_conductorN}">
+                            <f:selectItem itemValue="" itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{conductorController.items}"
+                                           var="conductorNItem"
+                                           itemValue="#{conductorNItem}"
+                                           itemLabel="#{conductorNItem.idConductor.toString()}"
+                                           />
+                            <f:converter converterId="conductorConverter"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{vehiculoController.save}" value="#{bundle.Save}" update="display,messagePanel,:VehiculoListForm:datalist" oncomplete="if(!args.validationFailed) {VehiculoEditDialog.hide();}"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VehiculoEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

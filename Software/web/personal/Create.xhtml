@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonalCreateDlg" widgetVar="PersonalCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreatePersonalTitle}">
+
+            <h:form id="PersonalCreateForm">
+
+                <h:panelGroup id="messagePanel">
+                    <p:messages/>
+                </h:panelGroup>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreatePersonalLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{personalController.selected.nombre}" title="#{bundle.CreatePersonalTitle_nombre}" required="true" requiredMessage="#{bundle.CreatePersonalRequiredMessage_nombre}"/>
+
+                        <p:outputLabel value="#{bundle.CreatePersonalLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{personalController.selected.apellido}" title="#{bundle.CreatePersonalTitle_apellido}" required="true" requiredMessage="#{bundle.CreatePersonalRequiredMessage_apellido}"/>
+
+                        <p:outputLabel value="#{bundle.CreatePersonalLabel_usuario}" for="usuario" />
+                        <p:inputText id="usuario" value="#{personalController.selected.usuario}" title="#{bundle.CreatePersonalTitle_usuario}" required="true" requiredMessage="#{bundle.CreatePersonalRequiredMessage_usuario}"/>
+
+                        <p:outputLabel value="#{bundle.CreatePersonalLabel_clave}" for="clave" />
+                        <p:inputText id="clave" value="#{personalController.selected.clave}" title="#{bundle.CreatePersonalTitle_clave}" required="true" requiredMessage="#{bundle.CreatePersonalRequiredMessage_clave}"/>
+
+                        <p:outputLabel value="#{bundle.CreatePersonalLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{personalController.selected.estado}" title="#{bundle.CreatePersonalTitle_estado}" />
+
+                        <p:outputLabel value="#{bundle.CreatePersonalLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{personalController.selected.email}" title="#{bundle.CreatePersonalTitle_email}" required="true" requiredMessage="#{bundle.CreatePersonalRequiredMessage_email}"/>
+
+                        <p:outputLabel value="#{bundle.CreatePersonalLabel_fechaCreacion}" for="fechaCreacion" />
+                        <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personalController.selected.fechaCreacion}" title="#{bundle.EditPersonalTitle_fechaCreacion}"  showOn="button"/>
+
+                        <p:outputLabel value="#{bundle.CreatePersonalLabel_usaurioModificacion}" for="usaurioModificacion" />
+                        <p:inputText id="usaurioModificacion" value="#{personalController.selected.usaurioModificacion}" title="#{bundle.CreatePersonalTitle_usaurioModificacion}" />
+
+                        <p:outputLabel value="#{bundle.CreatePersonalLabel_fechaModificacion}" for="fechaModificacion" />
+                        <p:calendar id="fechaModificacion" pattern="MM/dd/yyyy HH:mm:ss" value="#{personalController.selected.fechaModificacion}" title="#{bundle.EditPersonalTitle_fechaModificacion}"  showOn="button"/>
+
+                        <p:outputLabel value="#{bundle.CreatePersonalLabel_idRol}" for="idRol" />
+                        <p:selectOneMenu id="idRol" value="#{personalController.selected.idRol}" required="true" requiredMessage="#{bundle.EditPersonalRequiredMessage_idRol}">
+                            <f:selectItem itemValue="" itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{rolController.items}"
+                                           var="idRolItem"
+                                           itemValue="#{idRolItem}"
+                                           itemLabel="#{idRolItem.descripcion.toString()}"
+                                           />
+                            <f:converter converterId="rolConverter"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personalController.saveNew}" value="#{bundle.Save}" update="display,messagePanel,:PersonalListForm:datalist" oncomplete="if(!args.validationFailed) {PersonalCreateDialog.hide();}"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PersonalCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

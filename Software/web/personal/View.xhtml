@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonalViewDlg" widgetVar="PersonalViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewPersonalTitle}">
+
+            <h:form id="PersonalViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_idPersonal}"/>
+                        <h:outputText value="#{personalController.selected.idPersonal}" title="#{bundle.ViewPersonalTitle_idPersonal}"/>
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_nombre}"/>
+                        <h:outputText value="#{personalController.selected.nombre}" title="#{bundle.ViewPersonalTitle_nombre}"/>
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_apellido}"/>
+                        <h:outputText value="#{personalController.selected.apellido}" title="#{bundle.ViewPersonalTitle_apellido}"/>
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_usuario}"/>
+                        <h:outputText value="#{personalController.selected.usuario}" title="#{bundle.ViewPersonalTitle_usuario}"/>
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_clave}"/>
+                        <h:outputText value="#{personalController.selected.clave}" title="#{bundle.ViewPersonalTitle_clave}"/>
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_estado}"/>
+                        <h:outputText value="#{personalController.selected.estado}" title="#{bundle.ViewPersonalTitle_estado}"/>
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_email}"/>
+                        <h:outputText value="#{personalController.selected.email}" title="#{bundle.ViewPersonalTitle_email}"/>
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_fechaCreacion}"/>
+                        <h:outputText value="#{personalController.selected.fechaCreacion}" title="#{bundle.ViewPersonalTitle_fechaCreacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_usaurioModificacion}"/>
+                        <h:outputText value="#{personalController.selected.usaurioModificacion}" title="#{bundle.ViewPersonalTitle_usaurioModificacion}"/>
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_fechaModificacion}"/>
+                        <h:outputText value="#{personalController.selected.fechaModificacion}" title="#{bundle.ViewPersonalTitle_fechaModificacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{bundle.ViewPersonalLabel_idRol}"/>
+                        <h:outputText value="#{personalController.selected.idRol.descripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PersonalViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

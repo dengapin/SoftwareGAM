@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PaseoEditDlg" widgetVar="PaseoEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditPaseoTitle}">
+
+            <h:form id="PaseoEditForm">
+
+                <h:panelGroup id="messagePanel">
+                    <p:messages id="PaseoEditMessages"/>
+                </h:panelGroup>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{paseoController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditPaseoLabel_idPaseo}" for="idPaseo" />
+                        <h:outputText id="idPaseo" value="#{paseoController.selected.idPaseo}" />
+
+                        <p:outputLabel value="#{bundle.EditPaseoLabel_tema}" for="tema" />
+                        <p:inputText id="tema" value="#{paseoController.selected.tema}" title="#{bundle.EditPaseoTitle_tema}" />
+
+                        <p:outputLabel value="#{bundle.EditPaseoLabel_capacidad}" for="capacidad" />
+                        <p:inputText id="capacidad" value="#{paseoController.selected.capacidad}" title="#{bundle.EditPaseoTitle_capacidad}" required="true" requiredMessage="#{bundle.EditPaseoRequiredMessage_capacidad}"/>
+
+                        <p:outputLabel value="#{bundle.EditPaseoLabel_duracion}" for="duracion" />
+                        <p:inputText id="duracion" value="#{paseoController.selected.duracion}" title="#{bundle.EditPaseoTitle_duracion}" />
+
+                        <p:outputLabel value="#{bundle.EditPaseoLabel_idVehiculo}" for="idVehiculo" />
+                        <p:selectOneMenu id="idVehiculo" value="#{paseoController.selected.idVehiculo}" required="true" requiredMessage="#{bundle.EditPaseoRequiredMessage_idVehiculo}">
+                            <f:selectItem itemValue="" itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{vehiculoController.items}"
+                                           var="idVehiculoItem"
+                                           itemValue="#{idVehiculoItem}"
+                                           itemLabel="#{idVehiculoItem.idVehiculo.toString()}"
+                                           />
+                            <f:converter converterId="vehiculoConverter"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.EditPaseoLabel_idUser}" for="idUser" />
+                        <p:selectOneMenu id="idUser" value="#{paseoController.selected.idUser}" required="true" requiredMessage="#{bundle.EditPaseoRequiredMessage_idUser}">
+                            <f:selectItem itemValue="" itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usuarioController.items}"
+                                           var="idUserItem"
+                                           itemValue="#{idUserItem}"
+                                           itemLabel="#{idUserItem.idUsuario.toString()}"
+                                           />
+                            <f:converter converterId="usuarioConverter"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{paseoController.save}" value="#{bundle.Save}" update="display,messagePanel,:PaseoListForm:datalist" oncomplete="if(!args.validationFailed) {PaseoEditDialog.hide();}"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PaseoEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

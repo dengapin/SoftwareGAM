@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioViewDlg" widgetVar="UsuarioViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewUsuarioTitle}">
+
+            <h:form id="UsuarioViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_idUsuario}"/>
+                        <h:outputText value="#{usuarioController.selected.idUsuario}" title="#{bundle.ViewUsuarioTitle_idUsuario}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_nombres}"/>
+                        <h:outputText value="#{usuarioController.selected.nombres}" title="#{bundle.ViewUsuarioTitle_nombres}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_apellidos}"/>
+                        <h:outputText value="#{usuarioController.selected.apellidos}" title="#{bundle.ViewUsuarioTitle_apellidos}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_codigo}"/>
+                        <h:outputText value="#{usuarioController.selected.codigo}" title="#{bundle.ViewUsuarioTitle_codigo}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_grupo}"/>
+                        <h:outputText value="#{usuarioController.selected.grupo}" title="#{bundle.ViewUsuarioTitle_grupo}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_telefono}"/>
+                        <h:outputText value="#{usuarioController.selected.telefono}" title="#{bundle.ViewUsuarioTitle_telefono}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_cedula}"/>
+                        <h:outputText value="#{usuarioController.selected.cedula}" title="#{bundle.ViewUsuarioTitle_cedula}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_edad}"/>
+                        <h:outputText value="#{usuarioController.selected.edad}" title="#{bundle.ViewUsuarioTitle_edad}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_correo}"/>
+                        <h:outputText value="#{usuarioController.selected.correo}" title="#{bundle.ViewUsuarioTitle_correo}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_sexo}"/>
+                        <h:outputText value="#{usuarioController.selected.sexo}" title="#{bundle.ViewUsuarioTitle_sexo}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_tipoSangre}"/>
+                        <h:outputText value="#{usuarioController.selected.tipoSangre}" title="#{bundle.ViewUsuarioTitle_tipoSangre}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_direccion}"/>
+                        <h:outputText value="#{usuarioController.selected.direccion}" title="#{bundle.ViewUsuarioTitle_direccion}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_profesion}"/>
+                        <h:outputText value="#{usuarioController.selected.profesion}" title="#{bundle.ViewUsuarioTitle_profesion}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_convivencia}"/>
+                        <h:outputText value="#{usuarioController.selected.convivencia}" title="#{bundle.ViewUsuarioTitle_convivencia}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_patologia}"/>
+                        <h:outputText value="#{usuarioController.selected.patologia}" title="#{bundle.ViewUsuarioTitle_patologia}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_alergia}"/>
+                        <h:outputText value="#{usuarioController.selected.alergia}" title="#{bundle.ViewUsuarioTitle_alergia}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_instruccion}"/>
+                        <h:outputText value="#{usuarioController.selected.instruccion}" title="#{bundle.ViewUsuarioTitle_instruccion}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_licencia}"/>
+                        <h:outputText value="#{usuarioController.selected.licencia}" title="#{bundle.ViewUsuarioTitle_licencia}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_hijos}"/>
+                        <h:outputText value="#{usuarioController.selected.hijos}" title="#{bundle.ViewUsuarioTitle_hijos}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_observaciones}"/>
+                        <h:outputText value="#{usuarioController.selected.observaciones}" title="#{bundle.ViewUsuarioTitle_observaciones}"/>
+
+                        <h:outputText value="#{bundle.ViewUsuarioLabel_iduserR}"/>
+                        <h:outputText value="#{usuarioController.selected.iduserR.idRepresentante}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="UsuarioViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

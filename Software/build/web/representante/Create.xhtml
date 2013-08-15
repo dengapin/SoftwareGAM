@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RepresentanteCreateDlg" widgetVar="RepresentanteCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateRepresentanteTitle}">
+
+            <h:form id="RepresentanteCreateForm">
+
+                <h:panelGroup id="messagePanel">
+                    <p:messages/>
+                </h:panelGroup>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{representanteController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateRepresentanteLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{representanteController.selected.nombres}" title="#{bundle.CreateRepresentanteTitle_nombres}" required="true" requiredMessage="#{bundle.CreateRepresentanteRequiredMessage_nombres}"/>
+
+                        <p:outputLabel value="#{bundle.CreateRepresentanteLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{representanteController.selected.apellidos}" title="#{bundle.CreateRepresentanteTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateRepresentanteRequiredMessage_apellidos}"/>
+
+                        <p:outputLabel value="#{bundle.CreateRepresentanteLabel_edad}" for="edad" />
+                        <p:inputText id="edad" value="#{representanteController.selected.edad}" title="#{bundle.CreateRepresentanteTitle_edad}" required="true" requiredMessage="#{bundle.CreateRepresentanteRequiredMessage_edad}"/>
+
+                        <p:outputLabel value="#{bundle.CreateRepresentanteLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{representanteController.selected.email}" title="#{bundle.CreateRepresentanteTitle_email}" required="true" requiredMessage="#{bundle.CreateRepresentanteRequiredMessage_email}"/>
+
+                        <p:outputLabel value="#{bundle.CreateRepresentanteLabel_sexo}" for="sexo" />
+                        <p:inputText id="sexo" value="#{representanteController.selected.sexo}" title="#{bundle.CreateRepresentanteTitle_sexo}" required="true" requiredMessage="#{bundle.CreateRepresentanteRequiredMessage_sexo}"/>
+
+                        <p:outputLabel value="#{bundle.CreateRepresentanteLabel_profesion}" for="profesion" />
+                        <p:inputText id="profesion" value="#{representanteController.selected.profesion}" title="#{bundle.CreateRepresentanteTitle_profesion}" required="true" requiredMessage="#{bundle.CreateRepresentanteRequiredMessage_profesion}"/>
+
+                        <p:outputLabel value="#{bundle.CreateRepresentanteLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{representanteController.selected.observacion}" title="#{bundle.CreateRepresentanteTitle_observacion}" required="true" requiredMessage="#{bundle.CreateRepresentanteRequiredMessage_observacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{representanteController.saveNew}" value="#{bundle.Save}" update="display,messagePanel,:RepresentanteListForm:datalist" oncomplete="if(!args.validationFailed) {RepresentanteCreateDialog.hide();}"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RepresentanteCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
