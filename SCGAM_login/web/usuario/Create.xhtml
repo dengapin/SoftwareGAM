@@ -29,8 +29,13 @@
                         <p:inputText id="codigo" value="#{usuarioController.selected.codigo}" title="#{bundle.CreateUsuarioTitle_codigo}" />
 
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_grupo}" for="grupo" />
-                        <p:inputText id="grupo" value="#{usuarioController.selected.grupo}" title="#{bundle.CreateUsuarioTitle_grupo}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_grupo}"/>
-
+                        <p:selectOneMenu id="grupo" value="#{usuarioController.selected.grupo}" label="#{bundle.CreateUsuarioTitle_grupo}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_grupo}">  
+                                <f:selectItem itemLabel="Selecionar Grupo" itemValue="" />
+                                <f:selectItem itemLabel="Cap. Fisica y Cognitiva Buena" itemValue="A" />  
+                                <f:selectItem itemLabel="Cap. Fisica y Cognitiva Media" itemValue="B" />
+                                <f:selectItem itemLabel="Cap. Fisica y Cognitiva Baja" itemValue="C" /> 
+                         </p:selectOneMenu> 
+                        
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_telefono}" for="telefono" />
                         <p:inputText id="telefono" value="#{usuarioController.selected.telefono}" title="#{bundle.CreateUsuarioTitle_telefono}" />
 
@@ -44,11 +49,24 @@
                         <p:inputText id="correo" value="#{usuarioController.selected.correo}" title="#{bundle.CreateUsuarioTitle_correo}" />
 
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_sexo}" for="sexo" />
-                        <p:inputText id="sexo" value="#{usuarioController.selected.sexo}" title="#{bundle.CreateUsuarioTitle_sexo}" />
-
+                        <p:selectOneMenu id="sexo" value="#{usuarioController.selected.sexo}" label="#{bundle.CreateUsuarioTitle_sexo}" >  
+                                <f:selectItem itemLabel="Selecionar Sexo" itemValue="" />
+                                <f:selectItem itemLabel="Femenino" itemValue="F" />  
+                                <f:selectItem itemLabel="Masculino" itemValue="M" />
+                         </p:selectOneMenu> 
+                        
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_tipoSangre}" for="tipoSangre" />
-                        <p:inputText id="tipoSangre" value="#{usuarioController.selected.tipoSangre}" title="#{bundle.CreateUsuarioTitle_tipoSangre}" />
-
+                        <p:selectOneMenu id="tipoSangre" value="#{usuarioController.selected.tipoSangre}" label="#{bundle.CreateUsuarioTitle_tipoSangre}" >  
+                            <f:selectItem itemLabel="Selecionar Tipo de Sangre" itemValue="" />    
+                            <f:selectItem itemLabel="A+" itemValue="A+" /> 
+                            <f:selectItem itemLabel="A-" itemValue="A-" />
+                            <f:selectItem itemLabel="B+" itemValue="B+" />
+                            <f:selectItem itemLabel="B-" itemValue="B-" />
+                            <f:selectItem itemLabel="AB" itemValue="AB" />
+                            <f:selectItem itemLabel="O+" itemValue="O+" />
+                            <f:selectItem itemLabel="O-" itemValue="O-" />
+                         </p:selectOneMenu> 
+                        
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_direccion}" for="direccion" />
                         <p:inputText id="direccion" value="#{usuarioController.selected.direccion}" title="#{bundle.CreateUsuarioTitle_direccion}" />
 
@@ -65,13 +83,27 @@
                         <p:inputText id="alergia" value="#{usuarioController.selected.alergia}" title="#{bundle.CreateUsuarioTitle_alergia}" />
 
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_instruccion}" for="instruccion" />
-                        <p:inputText id="instruccion" value="#{usuarioController.selected.instruccion}" title="#{bundle.CreateUsuarioTitle_instruccion}" />
+                        <p:selectOneMenu id="instruccion" value="#{usuarioController.selected.instruccion}" label="#{bundle.CreateUsuarioTitle_instruccion}" >  
+                            <f:selectItem itemLabel="Selecionar Instruccion" itemValue="" />    
+                            <f:selectItem itemLabel="Primaria" itemValue="Primaria" />  
+                            <f:selectItem itemLabel="Secundaria" itemValue="Secundaria" />
+                            <f:selectItem itemLabel="Superior" itemValue="Superior" /> 
+                         </p:selectOneMenu> 
 
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_licencia}" for="licencia" />
-                        <p:inputText id="licencia" value="#{usuarioController.selected.licencia}" title="#{bundle.CreateUsuarioTitle_licencia}" />
+                        <p:selectBooleanCheckbox id="licencia" value="#{usuarioController.selected.licencia}" />
 
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_hijos}" for="hijos" />
-                        <p:inputText id="hijos" value="#{usuarioController.selected.hijos}" title="#{bundle.CreateUsuarioTitle_hijos}" />
+                        <p:selectOneMenu id="hijos" value="#{usuarioController.selected.hijos}" label="#{bundle.CreateUsuarioTitle_hijos}" >  
+                            <f:selectItem itemLabel="Selecionar Hijos" itemValue="" />    
+                            <f:selectItem itemLabel="1" itemValue="1" />  
+                            <f:selectItem itemLabel="2" itemValue="2" />
+                            <f:selectItem itemLabel="3" itemValue="3" /> 
+                            <f:selectItem itemLabel="4" itemValue="4" />  
+                            <f:selectItem itemLabel="5" itemValue="5" />
+                            <f:selectItem itemLabel="6" itemValue="6" />
+                            <f:selectItem itemLabel="7" itemValue="7" />
+                         </p:selectOneMenu> 
 
                         <p:outputLabel value="#{bundle.CreateUsuarioLabel_observaciones}" for="observaciones" />
                         <p:inputText id="observaciones" value="#{usuarioController.selected.observaciones}" title="#{bundle.CreateUsuarioTitle_observaciones}" />
