@@ -5,11 +5,13 @@ INSERT INTO Usuario VALUES ('2','Andres Cesar','Trujillo Carrera','0055','B','04
 INSERT INTO Usuario VALUES ('3','Ricardo Adolfo','Campozano Aviles','0065','A','042346503','092165756','69','rcampozano@gmail.com','M','A','Los Rios y 4 de Noviembre','Ingeniero','Representante Legal Hijo','Diabetes','Ninguna','Superior',TRUE,'3','Ninguna','1');
 INSERT INTO Usuario VALUES ('4','Miguel Arturo','Bayas Zurita','0022','B','042467003','0911336600','65','mbayas@gmail.com','M','A','Medardo Angel Silva y la 14 ava','Ingeniero','Representante Legal Hijo','Ingeniero','Ninguna','Superior',TRUE,'3','Ninguna','1');
 INSERT INTO Usuario VALUES ('5','Luis Alejandro','Torres Mejia','0034','A','042816530','091185755','65','ltorres@gmail.com','M','O','Ciudadela Primavera II','Abogado','Representante Legal Hijo','Alzheimer','Ninguna','Superior',TRUE,'2','Ninguna','1');
+INSERT INTO Usuario VALUES ('6','Carlos Alberto','Campoverde Saltos','0077','A','048567530','092288897','68','ccampoverde@gmail.com','M','O','Portete y la l7','Ingeniero Mecanico','Representante Legal Hijo','Alzheimer','Ninguna','Superior',TRUE,'2','Ninguna','1');
 
 
 
 CREATE TABLE Rol (idRol INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(45) NOT NULL, descripcion VARCHAR(100) NULL, estado TINYINT NULL);
 INSERT INTO Rol VALUES ('1','Administradora','Tareas administrativas','1');
+INSERT INTO Rol VALUES ('2','Administradora','Tareas administrativas','1');
 
 CREATE TABLE Menu (idMenu INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, nivel INT NOT NULL, orden INT NOT NULL, nombre VARCHAR(45) NOT NULL, url VARCHAR(10) NULL, icono VARCHAR(10) NULL, estado TINYINT NULL);
 INSERT INTO Menu VALUES ('1','2','00768','Taller de Actividades','MenuOp','15478123','1');
@@ -24,6 +26,7 @@ INSERT INTO RolMenu VALUES ('1','1','1');
 CREATE TABLE Personal (idPersonal INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(45) NOT NULL, apellido VARCHAR(45) NOT NULL, usuario VARCHAR(45) NOT NULL, clave VARCHAR(45) NOT NULL, estado VARCHAR(45) NULL, email VARCHAR(45) NOT NULL, fecha_creacion DATETIME NULL, usaurio_modificacion VARCHAR(45) NULL, fecha_modificacion DATETIME NULL, id_rol INT NOT NULL, FOREIGN KEY (id_rol) REFERENCES Rol (idRol) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE=InnoDB;
 SELECT idRol FROM Rol WHERE idRol='1';
 INSERT INTO Personal VALUES ('1','Tamara Laura','Andrade Vera','Correa Vera','923472','Activo','Tamara.Andrade@gmail.com','2013-05-03 15:30:45','Administrador','2013-07-03 20:30:45','1');
+INSERT INTO Personal VALUES ('2','Esthela Carolina','Martinez Sanz','Sarmiento Sanz','574372','Activo','Carolina.martinez@gmail.com','2013-05-07 16:30:45','Administrador','2013-07-05 21:30:45','1');
 
 
 
@@ -32,6 +35,8 @@ INSERT INTO  Representante VALUES ('1','Tatiana Elizabeth','Mendoza Carrillo','3
 
 CREATE TABLE Conductor (idConductor INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, Nombres VARCHAR(100) NOT NULL, Apellidos VARCHAR(100) NOT NULL, Licencia VARCHAR(2) NOT NULL, Sexo VARCHAR(2) NOT NULL, Telefono VARCHAR(45) NOT NULL, Direccion VARCHAR(45) NOT NULL, Observacion VARCHAR(45) NOT NULL);
 INSERT INTO Conductor VALUES ('1','Carlos Eduardo','Romero Arias','si','h','042564887','Ciudadela Los Esteros','Conductor profesional');
+INSERT INTO Conductor VALUES ('2','Roberto Mario','Mejia Alvarado','si','h','042987723','Ciudadela Los Alamos','Conductor profesional');
+
 
 
 HQL
