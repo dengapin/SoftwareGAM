@@ -13,6 +13,7 @@
             <h:form id="PersonalViewForm">
 
                 <h:panelGroup id="display">
+                <p:graphicImage value="/faces/views/#{personalController.selected.usuario}.png"/>  
                     <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
 
                         <h:outputText value="#{bundle.ViewPersonalLabel_idPersonal}"/>
