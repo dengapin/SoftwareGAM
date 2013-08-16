@@ -14,6 +14,32 @@
             <p:panel header="#{bundle.Welcome}">
                 <p><h:outputText value="#{bundle.WelcomeMessage}"></h:outputText></p>
             </p:panel>
+            
+            <p:accordionPanel>  
+                    <p:tab title="Usuarios">  
+                        <h:panelGrid columns="2" cellpadding="10" >  
+                            <p:graphicImage value="/faces/views/usuarios_imagen.png" />  
+                            <h:outputText  value="El centro gerontológico es un centro de cuidado diario, pensado para que los adultos/as mayores usuarios del centro encuentren un espacio adecuado donde se promueva su autonomía e interactúen con su mismo grupo etario en condiciones de bienestar, todo esto gracias 
+                                           a los servicios de atención y programas de prevención especializada.
+                                           En este espacio de interacción se promueve la visibilización y la integración social de nuestros usuarios, por lo cual nuestro servicio se basa en tres componentes:." />  
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="Talleres">  
+                        <h:panelGrid columns="2" cellpadding="10">  
+                            <p:graphicImage value="/faces/views/usuarios_talleres.png" />  
+                            <h:outputText value="Taller “Trabajo en equipo, Participación y Liderazgo”, dictado por estudiantes de la Carrera 
+                                          de Psicología Organizacional de la UCSG.
+                                          Festival Día del Amor, La Amistad y La Confraternidad.
+                                          Taller: Técnicas de Apoyo Psicomotriz para el Adulto Mayor." />                            
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="Actividades">  
+                        <h:panelGrid columns="2" cellpadding="10">  
+                            <p:graphicImage value="/faces/views/usuarios_actividades.png" />  
+                            <h:outputText value="Programa de recreación grupal, Tiempo libre: juegos de mesa, paseos, cineforo, etc.." />  
+                        </h:panelGrid>  
+                    </p:tab>  
+                </p:accordionPanel>
 
         </ui:define>
 
