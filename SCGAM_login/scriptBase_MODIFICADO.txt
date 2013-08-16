@@ -1,0 +1,55 @@
+CREATE TABLE Usuario (idUsuario INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, Nombres VARCHAR(100) NOT NULL, Apellidos VARCHAR(100) NOT NULL, Codigo VARCHAR(4) NULL, Grupo VARCHAR(2) NOT NULL, Telefono VARCHAR(45) NULL, Cedula VARCHAR(10) NOT NULL, Edad INT NOT NULL, Correo VARCHAR(45) NULL, Sexo VARCHAR(45) NULL, Tipo_Sangre VARCHAR(2) NULL, Direccion VARCHAR(45) NULL, Profesion VARCHAR(45) NULL, Convivencia VARCHAR(45) NULL, Patologia VARCHAR(45) NULL, Alergia VARCHAR(45) NULL, Instruccion VARCHAR(45) NULL, Licencia BOOLEAN NULL, Hijos VARCHAR(1) NULL, Observaciones VARCHAR(45) NULL, id_userR INT NOT NULL, FOREIGN KEY (id_userR) REFERENCES Representante (idRepresentante) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE=InnoDB;
+SELECT idRepresentante FROM Representante WHERE idRepresentante='1';
+INSERT INTO Usuario VALUES ('1','Carolina Estefania','Correa Vera','0045','A','042346503','0326483689','67','carolinaEstef.correa@gmail.com','F','AB','Urdesa Norte','Licenciada','Representante Legal Hijo','Osteoporosis','Ninguna','Seundaria',TRUE,'3','Ninguna','1');
+INSERT INTO Usuario VALUES ('2','Andres Cesar','Trujillo Carrera','0055','B','042356533','0926484341','77','atrujillo@gmail.com','M','O','Luis Urdaneta y Rumichaca','Vendedor','Representante Legal Hija','Parkinson','Ninguna','Secundaria',TRUE,'3','Ninguna','1');
+INSERT INTO Usuario VALUES ('3','Ricardo Adolfo','Campozano Aviles','0065','A','042346503','092165756','69','rcampozano@gmail.com','M','A','Los Rios y 4 de Noviembre','Ingeniero','Representante Legal Hijo','Diabetes','Ninguna','Superior',TRUE,'3','Ninguna','1');
+INSERT INTO Usuario VALUES ('4','Miguel Arturo','Bayas Zurita','0022','B','042467003','0911336600','65','mbayas@gmail.com','M','A','Medardo Angel Silva y la 14 ava','Ingeniero','Representante Legal Hijo','Ingeniero','Ninguna','Superior',TRUE,'3','Ninguna','1');
+INSERT INTO Usuario VALUES ('5','Luis Alejandro','Torres Mejia','0034','A','042816530','091185755','65','ltorres@gmail.com','M','O','Ciudadela Primavera II','Abogado','Representante Legal Hijo','Alzheimer','Ninguna','Superior',TRUE,'2','Ninguna','1');
+
+
+
+CREATE TABLE Rol (idRol INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(45) NOT NULL, descripcion VARCHAR(100) NULL, estado TINYINT NULL);
+INSERT INTO Rol VALUES ('1','Administradora','Tareas administrativas','1');
+
+CREATE TABLE Menu (idMenu INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, nivel INT NOT NULL, orden INT NOT NULL, nombre VARCHAR(45) NOT NULL, url VARCHAR(10) NULL, icono VARCHAR(10) NULL, estado TINYINT NULL);
+INSERT INTO Menu VALUES ('1','2','00768','Taller de Actividades','MenuOp','15478123','1');
+
+
+CREATE TABLE RolMenu (idRolMenu INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, id_menu INT NOT NULL, id_rol INT NOT NULL, FOREIGN KEY (id_menu) REFERENCES Menu (idMenu) ON DELETE RESTRICT ON UPDATE CASCADE, FOREIGN KEY (id_rol) REFERENCES Rol (idRol) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE=InnoDB; 
+SELECT idRol FROM Rol WHERE idRol ='1';
+SELECT idMenu FROM Menu WHERE idMenu ='1';
+INSERT INTO RolMenu VALUES ('1','1','1');
+
+
+CREATE TABLE Personal (idPersonal INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(45) NOT NULL, apellido VARCHAR(45) NOT NULL, usuario VARCHAR(45) NOT NULL, clave VARCHAR(45) NOT NULL, estado VARCHAR(45) NULL, email VARCHAR(45) NOT NULL, fecha_creacion DATETIME NULL, usaurio_modificacion VARCHAR(45) NULL, fecha_modificacion DATETIME NULL, id_rol INT NOT NULL, FOREIGN KEY (id_rol) REFERENCES Rol (idRol) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE=InnoDB;
+SELECT idRol FROM Rol WHERE idRol='1';
+INSERT INTO Personal VALUES ('1','Tamara Laura','Andrade Vera','Correa Vera','923472','Activo','Tamara.Andrade@gmail.com','2013-05-03 15:30:45','Administrador','2013-07-03 20:30:45','1');
+
+
+
+CREATE TABLE Representante (idRepresentante INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, Nombres VARCHAR(100) NOT NULL, Apellidos VARCHAR(100) NOT NULL, Edad INT NOT NULL, Email VARCHAR(50) NOT NULL, Sexo VARCHAR(10) NOT NULL, Profesion VARCHAR(45) NOT NULL, Observacion VARCHAR(45) NOT NULL);
+INSERT INTO  Representante VALUES ('1','Tatiana Elizabeth','Mendoza Carrillo','35','Tatiana.Mendoza@gmail.com','f','Ingeniera Comercial','Representante autorizada');
+
+CREATE TABLE Conductor (idConductor INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, Nombres VARCHAR(100) NOT NULL, Apellidos VARCHAR(100) NOT NULL, Licencia VARCHAR(2) NOT NULL, Sexo VARCHAR(2) NOT NULL, Telefono VARCHAR(45) NOT NULL, Direccion VARCHAR(45) NOT NULL, Observacion VARCHAR(45) NOT NULL);
+INSERT INTO Conductor VALUES ('1','Carlos Eduardo','Romero Arias','si','h','042564887','Ciudadela Los Esteros','Conductor profesional');
+
+
+HQL
+insert into Usuario(idUsuario, nombres,apellidos,codigo,grupo,telefono,cedula,edad,correo,sexo,tipoSangre,direccion,profesion,convivencia,patologia,alergia,instruccion,licencia,hijos,observaciones) values ('6','Mario Fabricio','Granizo Bustamante','0027','A','046616599','0912334177','65','mariogb@gmail.com','M','O','15 y Huancavilca','Abogado','Representante Legal Hija','Esquizofrenia','Ninguna','Superior',TRUE,'1','Ninguna','1')
+
+CREATE TABLE Vehiculo (idVehiculo INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, Tipo VARCHAR(45) NOT NULL, Capacidad VARCHAR(45) NOT NULL, Observacion VARCHAR(45) NOT NULL, conductor_n INT NOT NULL, FOREIGN KEY (conductor_n) REFERENCES Conductor (idConductor) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE=InnoDB;
+SELECT idConductor FROM Conductor WHERE idConductor=1;
+INSERT INTO Vehiculo VALUES ('1','Camioneta','50 Personas','Transporte para Actividades','1');
+
+
+CREATE TABLE Paseo (idPaseo INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, Tema VARCHAR(45) NOT NULL, Capacidad INT NOT NULL, Duracion INT NOT NULL, id_user INT NOT NULL, id_vehiculo INT NOT NULL, FOREIGN KEY (id_user) REFERENCES Usuario (idUsuario) ON DELETE RESTRICT ON UPDATE CASCADE, FOREIGN KEY (id_vehiculo) REFERENCES Vehiculo (idVehiculo) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE=InnoDB;
+SELECT idUsuario FROM Usuario WHERE idUsuario='1';
+SELECT idVehiculo FROM Vehiculo WHERE idVehiculo='1';
+
+INSERT INTO Paseo VALUES ('1','Recreacion','50','4','1','1');
+
+CREATE TABLE Asistencia (idAsistencia INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY, Numero INT NOT NULL, Fecha DATETIME NOT NULL, id_user1 INT NOT NULL, FOREIGN KEY (id_user1) REFERENCES Usuario (idUsuario) ON DELETE RESTRICT ON UPDATE CASCADE) ENGINE=InnoDB;
+SELECT idUsuario FROM Usuario WHERE idUsuario='1';
+INSERT INTO Asistencia VALUES ('1','15','2013-05-03 15:30:45','1');
+
+
