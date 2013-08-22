@@ -103,7 +103,7 @@ public class Personal implements Serializable {
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
-        this.clave = clave;
+        this.clave = DigestUtils.md5Hex(clave);
         this.email = email;
     }
 
@@ -144,7 +144,7 @@ public class Personal implements Serializable {
     }
 
     public void setClave(String clave) {
-        this.clave = clave;
+        this.clave = DigestUtils.md2Hex(clave);
     }
 
     public String getEstado() {
