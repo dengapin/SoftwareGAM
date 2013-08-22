@@ -11,14 +11,12 @@
         <p:dialog id="PersonalViewDlg" widgetVar="PersonalViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewPersonalTitle}">
 
             <h:form id="PersonalViewForm">
-
+                
                 <h:panelGroup id="display">
-                <p:graphicImage value="/faces/views/#{personalController.selected.usuario}.png"/>  
+                    <p:graphicImage  value="/faces/views/#{personalController.selected.usuario}.png" />
                     <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
-
-                        <h:outputText value="#{bundle.ViewPersonalLabel_idPersonal}"/>
-                        <h:outputText value="#{personalController.selected.idPersonal}" title="#{bundle.ViewPersonalTitle_idPersonal}"/>
-
+                        
+                       
                         <h:outputText value="#{bundle.ViewPersonalLabel_nombre}"/>
                         <h:outputText value="#{personalController.selected.nombre}" title="#{bundle.ViewPersonalTitle_nombre}"/>
 
@@ -42,8 +40,8 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
 
-                        <h:outputText value="#{bundle.ViewPersonalLabel_usaurioModificacion}"/>
-                        <h:outputText value="#{personalController.selected.usaurioModificacion}" title="#{bundle.ViewPersonalTitle_usaurioModificacion}"/>
+                        <h:outputText value="#{bundle.ViewPersonalLabel_usuarioModificacion}"/>
+                        <h:outputText value="#{personalController.selected.usuarioModificacion}" title="#{bundle.ViewPersonalTitle_usuarioModificacion}"/>
 
                         <h:outputText value="#{bundle.ViewPersonalLabel_fechaModificacion}"/>
                         <h:outputText value="#{personalController.selected.fechaModificacion}" title="#{bundle.ViewPersonalTitle_fechaModificacion}">
