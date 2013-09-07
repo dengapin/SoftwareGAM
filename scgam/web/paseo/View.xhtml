@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PaseoViewDlg" widgetVar="PaseoViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewPaseoTitle}">
+
+            <h:form id="PaseoViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{paseoController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewPaseoLabel_idPaseo}"/>
+                        <h:outputText value="#{paseoController.selected.idPaseo}" title="#{bundle.ViewPaseoTitle_idPaseo}"/>
+
+                        <h:outputText value="#{bundle.ViewPaseoLabel_tema}"/>
+                        <h:outputText value="#{paseoController.selected.tema}" title="#{bundle.ViewPaseoTitle_tema}"/>
+
+                        <h:outputText value="#{bundle.ViewPaseoLabel_capacidad}"/>
+                        <h:outputText value="#{paseoController.selected.capacidad}" title="#{bundle.ViewPaseoTitle_capacidad}"/>
+
+                        <h:outputText value="#{bundle.ViewPaseoLabel_duracion}"/>
+                        <h:outputText value="#{paseoController.selected.duracion}" title="#{bundle.ViewPaseoTitle_duracion}"/>
+
+                        <h:outputText value="#{bundle.ViewPaseoLabel_idVehiculo}"/>
+                        <h:outputText value="#{paseoController.selected.idVehiculo.idVehiculo}"/>
+
+                        <h:outputText value="#{bundle.ViewPaseoLabel_idUser}"/>
+                        <h:outputText value="#{paseoController.selected.idUser.idUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PaseoViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

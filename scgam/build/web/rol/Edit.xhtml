@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RolEditDlg" widgetVar="RolEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditRolTitle}">
+
+            <h:form id="RolEditForm">
+
+                <h:panelGroup id="messagePanel">
+                    <p:messages id="RolEditMessages"/>
+                </h:panelGroup>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{rolController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditRolLabel_idRol}" for="idRol" />
+                        <h:outputText id="idRol" value="#{rolController.selected.idRol}" />
+
+                        <p:outputLabel value="#{bundle.EditRolLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{rolController.selected.nombre}" title="#{bundle.EditRolTitle_nombre}" required="true" requiredMessage="#{bundle.EditRolRequiredMessage_nombre}"/>
+
+                        <p:outputLabel value="#{bundle.EditRolLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{rolController.selected.descripcion}" title="#{bundle.EditRolTitle_descripcion}" />
+
+                        <p:outputLabel value="#{bundle.EditRolLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{rolController.selected.estado}" title="#{bundle.EditRolTitle_estado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{rolController.save}" value="#{bundle.Save}" update="display,messagePanel,:RolListForm:datalist" oncomplete="if(!args.validationFailed) {RolEditDialog.hide();}"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RolEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

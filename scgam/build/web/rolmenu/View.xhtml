@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RolmenuViewDlg" widgetVar="RolmenuViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewRolmenuTitle}">
+
+            <h:form id="RolmenuViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{rolmenuController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewRolmenuLabel_idRolMenu}"/>
+                        <h:outputText value="#{rolmenuController.selected.idRolMenu}" title="#{bundle.ViewRolmenuTitle_idRolMenu}"/>
+
+                        <h:outputText value="#{bundle.ViewRolmenuLabel_idRol}"/>
+                        <h:outputText value="#{rolmenuController.selected.idRol.descripcion}"/>
+
+                        <h:outputText value="#{bundle.ViewRolmenuLabel_idMenu}"/>
+                        <h:outputText value="#{rolmenuController.selected.idMenu.idMenu}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RolmenuViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConductorViewDlg" widgetVar="ConductorViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewConductorTitle}">
+
+            <h:form id="ConductorViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{conductorController.selected != null}">
+
+                        
+                        <h:outputText value="#{bundle.ViewConductorLabel_nombres}"/>
+                        <h:outputText value="#{conductorController.selected.nombres}" title="#{bundle.ViewConductorTitle_nombres}"/>
+
+                        <h:outputText value="#{bundle.ViewConductorLabel_apellidos}"/>
+                        <h:outputText value="#{conductorController.selected.apellidos}" title="#{bundle.ViewConductorTitle_apellidos}"/>
+
+                        <h:outputText value="#{bundle.ViewConductorLabel_licencia}"/>
+                        <h:outputText value="#{conductorController.selected.licencia}" title="#{bundle.ViewConductorTitle_licencia}"/>
+
+                        <h:outputText value="#{bundle.ViewConductorLabel_sexo}"/>
+                        <h:outputText value="#{conductorController.selected.sexo}" title="#{bundle.ViewConductorTitle_sexo}"/>
+
+                        <h:outputText value="#{bundle.ViewConductorLabel_telefono}"/>
+                        <h:outputText value="#{conductorController.selected.telefono}" title="#{bundle.ViewConductorTitle_telefono}"/>
+
+                        <h:outputText value="#{bundle.ViewConductorLabel_direccion}"/>
+                        <h:outputText value="#{conductorController.selected.direccion}" title="#{bundle.ViewConductorTitle_direccion}"/>
+
+                        <h:outputText value="#{bundle.ViewConductorLabel_observacion}"/>
+                        <h:outputText value="#{conductorController.selected.observacion}" title="#{bundle.ViewConductorTitle_observacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ConductorViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

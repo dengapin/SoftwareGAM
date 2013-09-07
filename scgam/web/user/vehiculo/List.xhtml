@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="VehiculoListForm">
+
+        <p:panel header="#{bundle.ListVehiculoTitle}">
+
+            <h:panelGroup id="messagePanel">
+                <p:messages id="listMessages"/>
+            </h:panelGroup>
+
+            <p:dataTable id="datalist" value="#{vehiculoController.items}" var="item"
+                         selectionMode="single" selection="#{vehiculoController.selected}"
+                         rowKey="#{item.idVehiculo}"
+                         paginator="true"
+                         rows="5"
+                         rowsPerPageTemplate="5,10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="viewButton"/>
+                <p:ajax event="rowUnselect" update="viewButton"/>
+
+                
+                <p:column sortBy="#{item.tipo}" filterBy="#{item.tipo}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListVehiculoTitle_tipo}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.tipo}"/>
+                </p:column>
+                <p:column sortBy="#{item.capacidad}" filterBy="#{item.capacidad}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListVehiculoTitle_capacidad}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.capacidad}"/>
+                </p:column>
+                <p:column sortBy="#{item.observacion}" filterBy="#{item.observacion}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListVehiculoTitle_observacion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.observacion}"/>
+                </p:column>
+                <p:column sortBy="#{item.conductorN.idConductor}" filterBy="#{item.conductorN.idConductor}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListVehiculoTitle_conductorN}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.conductorN.idConductor}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":VehiculoViewForm:display" oncomplete="VehiculoViewDialog.show()" disabled="#{empty vehiculoController.selected}"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

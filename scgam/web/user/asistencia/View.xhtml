@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AsistenciaViewDlg" widgetVar="AsistenciaViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewAsistenciaTitle}">
+
+            <h:form id="AsistenciaViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{asistenciaController.selected != null}">
+
+                        
+                        <h:outputText value="#{bundle.ViewAsistenciaLabel_numero}"/>
+                        <h:outputText value="#{asistenciaController.selected.numero}" title="#{bundle.ViewAsistenciaTitle_numero}"/>
+
+                        <h:outputText value="#{bundle.ViewAsistenciaLabel_fecha}"/>
+                        <h:outputText value="#{asistenciaController.selected.fecha}" title="#{bundle.ViewAsistenciaTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{bundle.ViewAsistenciaLabel_idUser1}"/>
+                        <h:outputText value="#{asistenciaController.selected.idUser1.idUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AsistenciaViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

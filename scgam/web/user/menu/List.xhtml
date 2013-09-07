@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="MenuListForm">
+
+        <p:panel header="#{bundle.ListMenuTitle}">
+
+            <h:panelGroup id="messagePanel">
+                <p:messages id="listMessages"/>
+            </h:panelGroup>
+
+            <p:dataTable id="datalist" value="#{menuController.items}" var="item"
+                         selectionMode="single" selection="#{menuController.selected}"
+                         rowKey="#{item.idMenu}"
+                         paginator="true"
+                         rows="5"
+                         rowsPerPageTemplate="5,10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="viewButton"/>
+                <p:ajax event="rowUnselect" update="viewButton"/>
+
+                
+                <p:column sortBy="#{item.nivel}" filterBy="#{item.nivel}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListMenuTitle_nivel}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nivel}"/>
+                </p:column>
+                <p:column sortBy="#{item.orden}" filterBy="#{item.orden}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListMenuTitle_orden}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.orden}"/>
+                </p:column>
+                <p:column sortBy="#{item.nombre}" filterBy="#{item.nombre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListMenuTitle_nombre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombre}"/>
+                </p:column>
+                <p:column sortBy="#{item.url}" filterBy="#{item.url}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListMenuTitle_url}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.url}"/>
+                </p:column>
+                <p:column sortBy="#{item.icono}" filterBy="#{item.icono}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListMenuTitle_icono}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.icono}"/>
+                </p:column>
+                <p:column sortBy="#{item.estado}" filterBy="#{item.estado}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListMenuTitle_estado}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.estado}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":MenuViewForm:display" oncomplete="MenuViewDialog.show()" disabled="#{empty menuController.selected}"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

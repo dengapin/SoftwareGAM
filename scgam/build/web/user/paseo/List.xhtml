@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="PaseoListForm">
+
+        <p:panel header="#{bundle.ListPaseoTitle}">
+
+            <h:panelGroup id="messagePanel">
+                <p:messages id="listMessages"/>
+            </h:panelGroup>
+
+            <p:dataTable id="datalist" value="#{paseoController.items}" var="item"
+                         selectionMode="single" selection="#{paseoController.selected}"
+                         rowKey="#{item.idPaseo}"
+                         paginator="true"
+                         rows="5"
+                         rowsPerPageTemplate="5,10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="viewButton"/>
+                <p:ajax event="rowUnselect" update="viewButton"/>
+
+                <p:column sortBy="#{item.tema}" filterBy="#{item.tema}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPaseoTitle_tema}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.tema}"/>
+                </p:column>
+                <p:column sortBy="#{item.capacidad}" filterBy="#{item.capacidad}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPaseoTitle_capacidad}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.capacidad}"/>
+                </p:column>
+                <p:column sortBy="#{item.duracion}" filterBy="#{item.duracion}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPaseoTitle_duracion}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.duracion}"/>
+                </p:column>
+                <p:column sortBy="#{item.idVehiculo.idVehiculo}" filterBy="#{item.idVehiculo.idVehiculo}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPaseoTitle_idVehiculo}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idVehiculo.idVehiculo}"/>
+                </p:column>
+                <p:column sortBy="#{item.idUser.idUsuario}" filterBy="#{item.idUser.idUsuario}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPaseoTitle_idUser}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idUser.idUsuario}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PaseoViewForm:display" oncomplete="PaseoViewDialog.show()" disabled="#{empty paseoController.selected}"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

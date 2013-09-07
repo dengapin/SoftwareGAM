@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AsistenciaEditDlg" widgetVar="AsistenciaEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditAsistenciaTitle}">
+
+            <h:form id="AsistenciaEditForm">
+
+                <h:panelGroup id="messagePanel">
+                    <p:messages id="AsistenciaEditMessages"/>
+                </h:panelGroup>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{asistenciaController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditAsistenciaLabel_idAsistencia}" for="idAsistencia" />
+                        <h:outputText id="idAsistencia" value="#{asistenciaController.selected.idAsistencia}" />
+
+                        <p:outputLabel value="#{bundle.EditAsistenciaLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{asistenciaController.selected.numero}" title="#{bundle.EditAsistenciaTitle_numero}" required="true" requiredMessage="#{bundle.EditAsistenciaRequiredMessage_numero}"/>
+
+                        <p:outputLabel value="#{bundle.EditAsistenciaLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy HH:mm:ss" value="#{asistenciaController.selected.fecha}" title="#{bundle.EditAsistenciaTitle_fecha}" required="true" requiredMessage="#{bundle.EditAsistenciaRequiredMessage_fecha}" showOn="button"/>
+
+                        <p:outputLabel value="#{bundle.EditAsistenciaLabel_idUser1}" for="idUser1" />
+                        <p:selectOneMenu id="idUser1" value="#{asistenciaController.selected.idUser1}" required="true" requiredMessage="#{bundle.EditAsistenciaRequiredMessage_idUser1}">
+                            <f:selectItem itemValue="" itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usuarioController.items}"
+                                           var="idUser1Item"
+                                           itemValue="#{idUser1Item}"
+                                           itemLabel="#{idUser1Item.idUsuario.toString()}"
+                                           />
+                            <f:converter converterId="usuarioConverter"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{asistenciaController.save}" value="#{bundle.Save}" update="display,messagePanel,:AsistenciaListForm:datalist" oncomplete="if(!args.validationFailed) {AsistenciaEditDialog.hide();}"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AsistenciaEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

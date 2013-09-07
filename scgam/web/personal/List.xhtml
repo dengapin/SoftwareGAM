@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="PersonalListForm">
+
+        <p:panel header="#{bundle.ListPersonalTitle}">
+            <p:graphicImage  value="/faces/views/personalLogo.png" />
+            <h:panelGroup id="messagePanel">
+                <p:messages id="listMessages"/>
+            </h:panelGroup>
+
+            <p:dataTable id="datalist" value="#{personalController.items}" var="item"
+                         selectionMode="single" selection="#{personalController.selected}"
+                         rowKey="#{item.idPersonal}"
+                         paginator="true"
+                         rows="5"
+                         rowsPerPageTemplate="5,10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                
+                <p:column sortBy="#{item.nombre}" filterBy="#{item.nombre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPersonalTitle_nombre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombre}"/>
+                </p:column>
+                <p:column sortBy="#{item.apellido}" filterBy="#{item.apellido}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPersonalTitle_apellido}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.apellido}"/>
+                </p:column>
+                <p:column sortBy="#{item.usuario}" filterBy="#{item.usuario}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPersonalTitle_usuario}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.usuario}"/>
+                </p:column>
+                <p:column sortBy="#{item.clave}" filterBy="#{item.clave}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPersonalTitle_clave}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.clave}"/>
+                </p:column>
+                
+                <p:column sortBy="#{item.email}" filterBy="#{item.email}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPersonalTitle_email}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.email}"/>
+                </p:column>
+                
+                <p:column sortBy="#{item.idRol.descripcion}" filterBy="#{item.idRol.descripcion}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListPersonalTitle_idRol}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idRol.descripcion}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{personalController.prepareCreate}" update=":PersonalCreateForm:display" oncomplete="PersonalCreateDialog.show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PersonalViewForm:display" oncomplete="PersonalViewDialog.show()" disabled="#{empty personalController.selected}"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PersonalEditForm:display" oncomplete="PersonalEditDialog.show()" disabled="#{empty personalController.selected}"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{personalController.delete}" update=":PersonalListForm:messagePanel,datalist" disabled="#{empty personalController.selected}"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

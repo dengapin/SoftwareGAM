@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+          
+            
+            <p:accordionPanel>  
+                    <p:tab title="Usuarios">  
+                        <h:panelGrid columns="2" cellpadding="10" >  
+                            <p:graphicImage value="/faces/views/usuarios_imagen.png" />  
+                            <h:outputText  value="El centro gerontológico es un centro de cuidado diario, pensado para que los adultos/as mayores usuarios del centro encuentren un espacio adecuado donde se promueva su autonomía e interactúen con su mismo grupo etario en condiciones de bienestar, todo esto gracias 
+                                           a los servicios de atención y programas de prevención especializada.
+                                           En este espacio de interacción se promueve la visibilización y la integración social de nuestros usuarios, por lo cual nuestro servicio se basa en tres componentes:." />  
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="Talleres">  
+                        <h:panelGrid columns="2" cellpadding="10">  
+                            <p:graphicImage value="/faces/views/usuarios_talleres.png" />  
+                            <h:outputText value="Taller “Trabajo en equipo, Participación y Liderazgo”, dictado por estudiantes de la Carrera 
+                                          de Psicología Organizacional de la UCSG.
+                                          Festival Día del Amor, La Amistad y La Confraternidad.
+                                          Taller: Técnicas de Apoyo Psicomotriz para el Adulto Mayor." />                            
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="Actividades">  
+                        <h:panelGrid columns="2" cellpadding="10">  
+                            <p:graphicImage value="/faces/views/usuarios_actividades.png" />  
+                            <h:outputText value="Programa de recreación grupal, Tiempo libre: juegos de mesa, paseos, cineforo, etc.." />  
+                        </h:panelGrid>  
+                    </p:tab>  
+                </p:accordionPanel>
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>
